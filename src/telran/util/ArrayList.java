@@ -19,9 +19,7 @@ public class ArrayList<T> implements List<T> {
 			//size is capacity
 			allocate();
 		}
-		array[size++] = element;
-		
-		
+		array[size++] = element;	
 	}
 
 	private void allocate() {
@@ -30,8 +28,16 @@ public class ArrayList<T> implements List<T> {
 	}
 	@Override
 	public boolean add(int index, T element) {
-		// TODO Auto-generated method stub
-		return false;
+		if(size == array.length) {
+			allocate();
+		}
+		if(!(index >= 0 && index <= size)) {
+			return false;
+		}
+		System.arraycopy(array, index, array, index + 1,size - index );
+		array[index] = element;
+		size++;
+		return true;
 	}
 
 	@Override
@@ -52,8 +58,14 @@ public class ArrayList<T> implements List<T> {
 	}
 	@Override
 	public T remove(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		if(!isValidIndex(index)) {
+			return null;
+		}
+		T element = array[index];
+		System.arraycopy(array, index + 1, array, index, size - index);
+		size--;
+		return element;
 	}
 
 }
+
