@@ -32,6 +32,7 @@ public class ArrayList<T> implements List<T> {
 
 	@Override
 	public boolean add(int index, T element) {
+<<<<<<< HEAD
 		if (size == array.length) {
 			allocate();
 		}
@@ -42,6 +43,23 @@ public class ArrayList<T> implements List<T> {
 		array[index] = element;
 		size++;
 		return true;
+=======
+		boolean res = false;
+		if (index == size) {
+			add(element);
+			res = true;
+			
+		} else if(isValidIndex(index)) {
+			res = true;
+			if (size == array.length) {
+				allocate();
+			}
+			System.arraycopy(array, index, array, index + 1, size - index);
+			array[index] = element;
+			size++;
+		}
+		return res;
+>>>>>>> branch 'homework' of https://github.com/Java42Telran/array-list
 	}
 
 	@Override
@@ -63,6 +81,7 @@ public class ArrayList<T> implements List<T> {
 
 	@Override
 	public T remove(int index) {
+<<<<<<< HEAD
 		if (!isValidIndex(index)) {
 			return null;
 		}
@@ -70,6 +89,16 @@ public class ArrayList<T> implements List<T> {
 		size--;
 		System.arraycopy(array, index + 1, array, index, size - index);
 		return element;
+=======
+		T res = null;
+		if (isValidIndex(index)) {
+			res = array[index];
+			size--;
+			System.arraycopy(array, index + 1, array, index, size - index);
+		}
+		
+		return res;
+>>>>>>> branch 'homework' of https://github.com/Java42Telran/array-list
 	}
 
 	
