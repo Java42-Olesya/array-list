@@ -32,18 +32,7 @@ public class ArrayList<T> implements List<T> {
 
 	@Override
 	public boolean add(int index, T element) {
-<<<<<<< HEAD
-		if (size == array.length) {
-			allocate();
-		}
-		if (!(index >= 0 && index <= size)) {
-			return false;
-		}
-		System.arraycopy(array, index, array, index + 1, size - index);
-		array[index] = element;
-		size++;
-		return true;
-=======
+
 		boolean res = false;
 		if (index == size) {
 			add(element);
@@ -59,7 +48,7 @@ public class ArrayList<T> implements List<T> {
 			size++;
 		}
 		return res;
->>>>>>> branch 'homework' of https://github.com/Java42Telran/array-list
+
 	}
 
 	@Override
