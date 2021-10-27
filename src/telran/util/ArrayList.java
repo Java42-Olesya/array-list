@@ -158,6 +158,8 @@ public class ArrayList<T> implements List<T> {
 	@Override
 	public boolean removeIf(Predicate<T> predicate) {
 		boolean res = false;
+		//[YG] If logic of moving from one iteration to other exists in an iteration, better to use "while"
+		//[YG] However you might do it with regular "for" without if / else. Only "for" should be different from yours. Think of it
 		for (int i = 0; i < size;) {
 			if (predicate.test(array[i])) {
 				remove(i);
