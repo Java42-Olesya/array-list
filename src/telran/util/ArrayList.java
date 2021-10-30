@@ -81,59 +81,32 @@ public class ArrayList<T> implements List<T> {
 
 		return res;
 	}
-<<<<<<< HEAD
 	
-=======
-
 	@Override
-	public boolean contains(T pattern) {
-		boolean res = false;
-		for (int i = 0; i < size; i++) {
-			if (array[i].equals(pattern)) {
-				res = true;
-				break;
-			}
-		}
-		return res;
-	}
-
-	@Override
-	public boolean contains(Predicate<T> predicate) {
-		boolean res = false;
+	public int indexOf(Predicate<T> predicate) {
+		int res = -1;
 		for (int i = 0; i < size; i++) {
 			if (predicate.test(array[i])) {
-				res = true;
+				res = i;
+				break;
+			}
+		}
+		return res;
+
+	}
+
+	@Override
+	public int lastIndexOf(Predicate<T> predicate) {
+		int res = -1;
+		for (int i = size - 1; i >= 0; i--) {
+			if (predicate.test(array[i])) {
+				res = i;
 				break;
 			}
 		}
 		return res;
 	}
 
->>>>>>> branch 'homework' of https://github.com/Java42-Olesya/array-list
-	@Override
-<<<<<<< HEAD
-	public int indexOf(Predicate<T> predicate) {
-				int res = -1;
-				for (int i = 0; i < size; i++) {
-					if (predicate.test(array[i])) {
-						res = i;
-						break;
-					}
-				}
-				return res;
-	}
-	@Override
-	public int lastIndexOf(Predicate<T> predicate) {
-		
-				int res = -1;
-				for (int i = size - 1; i >=0 ; i--) {
-					if (predicate.test(array[i])) {
-						res = i;
-						break;
-					}
-				}
-				return res;
-	}
 	@Override
 	public boolean removeIf(Predicate<T> predicate) {
 		int oldSize = size;
@@ -144,18 +117,6 @@ public class ArrayList<T> implements List<T> {
 		}
 		
 		return oldSize > size;
-=======
-	public int indexOf(T pattern) {
-		int res = -1;
-		for (int i = 0; i < size; i++) {
-			if (array[i].equals(pattern)) {
-				res = i;
-				break;
-			}
-		}
-
-		return res;
->>>>>>> branch 'homework' of https://github.com/Java42-Olesya/array-list
 	}
 	
 	@Override
@@ -166,59 +127,5 @@ public class ArrayList<T> implements List<T> {
 	}
 
 	
-
-	
-	
-
-	@Override
-	public int lastIndexOf(T pattern) {
-		int res = -1;
-		for (int i = size - 1; i >= 0; i--) {
-			if (array[i].equals(pattern)) {
-				res = i;
-				break;
-			}
-		}
-		return res;
-	}
-
-	@Override
-	public int indexOf(Predicate<T> predicate) {
-		int res = -1;
-		for (int i = 0; i < size; i++) {
-			if (predicate.test(array[i])) {
-				res = i;
-				break;
-			}
-		}
-		return res;
-
-	}
-
-	@Override
-	public int lastIndexOf(Predicate<T> predicate) {
-		int res = -1;
-		for (int i = size - 1; i >= 0; i--) {
-			if (predicate.test(array[i])) {
-				res = i;
-				break;
-			}
-		}
-		return res;
-	}
-
-	@Override
-	public boolean removeIf(Predicate<T> predicate) {
-		boolean res = false;
-		for (int i = 0; i < size;) {
-			if (predicate.test(array[i])) {
-				remove(i);
-				res = true;
-			}else {
-				i++;	
-			}	
-		}
-		return res;
-	}
 
 }
