@@ -27,8 +27,7 @@ public class ArrayList<T> implements List<T> {
 		array[size++] = element;
 	}
 	
-		
-	private void allocate() {
+	 private void allocate() {
 		array = Arrays.copyOf(array, array.length * 2);
 
 	}
@@ -86,9 +85,6 @@ public class ArrayList<T> implements List<T> {
 
 	}
 	
-	
-	
-	
 	@Override
 	public int indexOf(Predicate<T> predicate) {
 				int res = -1;
@@ -123,11 +119,17 @@ public class ArrayList<T> implements List<T> {
 		
 		return oldSize > size;
 	}
+	
 	@Override
 	public void sort(Comparator<T> comp) {
-		// TODO Auto-generated method stub
 		
+		Arrays.sort(array, 0, size, comp);
+	
 	}
+
+	
+
+	
 	
 
 	
