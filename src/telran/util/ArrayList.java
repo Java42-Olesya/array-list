@@ -125,11 +125,9 @@ public class ArrayList<T> implements List<T> {
 	}
 	@Override
 	public void sort(Comparator<T> comp) {
-<<<<<<< HEAD
-		// TODO Auto-generated method stub
-=======
+
 		Arrays.sort(array, 0, size, comp);
->>>>>>> branch 'homework' of https://github.com/Java42Telran/array-list
+
 		
 	}
 	
