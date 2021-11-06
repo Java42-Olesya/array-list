@@ -117,17 +117,20 @@ public class ArrayList<T> implements List<T> {
 	}
 	@Override
 	public boolean removeIf(Predicate<T> predicate) {
-		//O[N^2]
+		//O[N]
 		int oldSize = size;
-		for (int i = size - 1; i >= 0; i--) {
-			if (predicate.test(array[i])) {
-				remove(i);
+		for (int i = 0, indexCopy = 0; i < oldSize; i++) {
+			if(!predicate.test(array[i])) {
+			System.arraycopy(array, i, array, indexCopy, 1);	
+			indexCopy++;
+			}else {
+				size--;
 			}
 		}
-		
 		return oldSize > size;
-		//TODO rewrite the method for O[N] complexity
+
 	}
+	
 	@Override
 	public void sort(Comparator<T> comp) {
 		//O[N * LogN]
@@ -138,14 +141,32 @@ public class ArrayList<T> implements List<T> {
 
 	@Override
 	public int sortedSearch(T pattern, Comparator<T> comp) {
-		// TODO Auto-generated method stub
-		return 0;
+		// implied that array is sorted in accordance with a given comparator
+				int left = 0;
+				int right = size - 1;
+				int middle = 0;
+				int res = 0;
+				while(left <= right) {
+				middle = (left + right) / 2;
+				int resComp = comp.compare(pattern, array[middle]);
+					if(resComp == 0) {
+						res = middle;
+						break;
+					}
+					if(resComp > 0) {
+						left = middle + 1;
+					}else {
+						right = middle - 1;
+					}
+					res = -(left + 1);
+				}
+				return res;
 	}
 
+	
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		size = 0;	
 	}
 	
 
