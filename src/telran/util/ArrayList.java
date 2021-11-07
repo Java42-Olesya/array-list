@@ -121,6 +121,7 @@ public class ArrayList<T> implements List<T> {
 		int oldSize = size;
 		for (int i = 0, indexCopy = 0; i < oldSize; i++) {
 			if(!predicate.test(array[i])) {
+				//[YG] looks funny to use arraycopy for copying only one element
 			System.arraycopy(array, i, array, indexCopy, 1);	
 			indexCopy++;
 			}else {
@@ -158,6 +159,7 @@ public class ArrayList<T> implements List<T> {
 					}else {
 						right = middle - 1;
 					}
+					//[YG] - why do you need it at each iterations of the loop
 					res = -(left + 1);
 				}
 				return res;
