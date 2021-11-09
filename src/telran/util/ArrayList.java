@@ -140,17 +140,6 @@ public class ArrayList<T> implements List<T> {
 
 	@Override
 	public int sortedSearch(T pattern, Comparator<T> comp) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void clear() {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public int sortedSearch(T pattern, Comparator<T> comp) {
 		//implied that array is sorted in accordance with a given comparator
 		int left = 0;
 		int right = size - 1;
