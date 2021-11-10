@@ -30,6 +30,7 @@ public class ArrayList<T> implements List<T> {
 		@Override
 		public void remove() {
 		if(current != 0) {
+			//[YG] "if" shouldn't be as iterator may remove only being iterated elements
 		ArrayList.this.remove(--current);	
 		
 		}
