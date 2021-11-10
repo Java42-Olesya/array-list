@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.function.Predicate;
 
+
 public class ArrayList<T> implements List<T> {
 	private static final int DEFAULT_CAPACITY = 16;
 	private T[] array;
@@ -12,7 +13,7 @@ public class ArrayList<T> implements List<T> {
 	
 	private class ArrayListIterator implements Iterator<T>{
 	
-	 int current = 0;
+	int current = 0;
 		
 		@Override
 		public boolean hasNext() {
@@ -28,8 +29,10 @@ public class ArrayList<T> implements List<T> {
 		
 		@Override
 		public void remove() {
+		if(current != 0) {
+		ArrayList.this.remove(--current);	
 		
-		// TODO
+		}
 			
 		}
 	}
