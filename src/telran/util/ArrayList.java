@@ -2,12 +2,37 @@ package telran.util;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.function.Predicate;
 
 public class ArrayList<T> implements List<T> {
 	private static final int DEFAULT_CAPACITY = 16;
 	private T[] array;
 	private int size = 0;
+	
+	private class ArrayListIterator implements Iterator<T>{
+	
+	 int current = 0;
+		
+		@Override
+		public boolean hasNext() {
+			
+			return current < size;
+		}
+
+		@Override
+		public T next() {
+			
+			return  array[current++];
+		}
+		
+		@Override
+		public void remove() {
+		
+		// TODO
+			
+		}
+	}
 
 	@SuppressWarnings("unchecked")
 	public ArrayList(int capacity) {
@@ -88,9 +113,6 @@ public class ArrayList<T> implements List<T> {
 
 	}
 	
-	
-	
-	
 	@Override
 	public int indexOf(Predicate<T> predicate) {
 		//O[N]
@@ -126,9 +148,8 @@ public class ArrayList<T> implements List<T> {
 			} 
 		}
 		size = indCopy;
-		
 		return oldSize > size;
-		//TODO rewrite the method for O[N] complexity
+	
 	}
 	@Override
 	public void sort(Comparator<T> comp) {
@@ -166,6 +187,12 @@ public class ArrayList<T> implements List<T> {
 		array = (T[]) new Object[DEFAULT_CAPACITY];
 		size = 0;
 		
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+	
+		return new ArrayListIterator();
 	}
 	
 
